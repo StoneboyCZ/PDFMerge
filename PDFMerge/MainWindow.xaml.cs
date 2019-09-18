@@ -33,7 +33,7 @@ namespace PDFMerge
             dlg.Multiselect = true;
             dlg.DefaultExt = "*.pdf";
             dlg.Filter = "Soubory PDF (.pdf)|*.pdf";
-            dlg.Title = "Vyberte soubory PDF, které chcete spojit (pro výběr více souborů držte shift)";
+            dlg.Title = "Kliknutím vyberte soubory PDF, které chcete spojit (pro výběr více souborů držte CTRL)";
             bool? result = dlg.ShowDialog();
 
             if (result == true)
