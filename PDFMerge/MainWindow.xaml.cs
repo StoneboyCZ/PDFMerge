@@ -29,13 +29,17 @@ namespace PDFMerge
 
         private void Btn_selectInputFiles_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.Multiselect = true;
-            dlg.DefaultExt = "*.pdf";
-            dlg.Filter = "Soubory PDF (.pdf)|*.pdf";
-            dlg.Title = "Kliknutím vyberte soubory PDF, které chcete spojit (pro výběr více souborů držte CTRL)";
+            /// Set up open file dialog
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
+            {
+                Multiselect = true,
+                DefaultExt = "*.pdf",
+                Filter = "Soubory PDF (.pdf)|*.pdf",
+                Title = "Kliknutím vyberte soubory PDF, které chcete spojit (pro výběr více souborů držte CTRL)"
+            };
             bool? result = dlg.ShowDialog();
 
+            // If the files are picked
             if (result == true)
             {
                 // smazat aktuálně vybrané soubory
@@ -71,12 +75,15 @@ namespace PDFMerge
                         PdfPage p = inputFile.Pages[i];
                         outputPDF.AddPage(p);
                     }
+
+                    inputFile.Close();
                 }
 
-                Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-                dlg.FileName = "spojen_";
-                dlg.DefaultExt = "*.pdf";
-                dlg.Filter = "Soubory PDF (*.pdf)|*.pdf";
+                Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog
+                {
+                    DefaultExt = "*.pdf",
+                    Filter = "Soubory PDF (*.pdf)|*.pdf"
+                };
 
                 bool? result = dlg.ShowDialog();
 
@@ -85,6 +92,7 @@ namespace PDFMerge
                     outputPDF.Save(dlg.FileName);
                 }
 
+                outputPDF.Close();
             }
         }
     }
