@@ -105,6 +105,11 @@ namespace PDFMerge
                 if (result == true)
                 {
                     outputFile.Save(dlg.FileName);
+
+                    _ = MessageBox.Show(messageBoxText: String.Format("Soubor úspěšně uložen do\n{0}", dlg.FileName),
+                                    caption: "Soubor PDF úspěšně uložen",
+                                    button: MessageBoxButton.OK,
+                                    icon: MessageBoxImage.Information);
                 }
 
                 outputFile.Close();
@@ -156,6 +161,24 @@ namespace PDFMerge
             listBox.Items.Insert(newIndex, selected);
             // Restore selection
             listBox.SelectedItem = selected;
+        }
+
+        /// <summary>
+        /// Event handler for dropping files into the listBox. Attribution: https://stackoverflow.com/questions/5662509/drag-and-drop-files-into-wpf
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBox_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                foreach (string fn in files)
+                {
+                    _ = listBox.Items.Add(fn);
+                }
+            }
         }
     }
 }

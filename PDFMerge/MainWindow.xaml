@@ -7,14 +7,13 @@
         mc:Ignorable="d"
         Title="PDFMerger" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="269" Margin="10,58,0,0" VerticalAlignment="Top" Width="617" />
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="269" Margin="10,58,0,0" VerticalAlignment="Top" Width="617" AllowDrop="True" Drop="listBox_Drop"/>
         <Label x:Name="label" Content="soubory PDF, které chcete spojit. Seznam vybraných souborů:" HorizontalAlignment="Left" Margin="99,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.838,0.533"/>
         <Button x:Name="btn_mergePDFs" Content="Spojit soubory do PDF" HorizontalAlignment="Left" Margin="295,332,0,0" VerticalAlignment="Top" Width="138" Height="29" Click="Btn_mergePDFs_Click" IsEnabled="False"/>
         <Button x:Name="btn_selectInputFiles" Content="Vyberte" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Width="75" Click="Btn_selectInputFiles_Click" IsDefault="True"/>
         <Label x:Name="label1" Content="Vytvořil Petr Veigend, 2019. Používá PDFSharp." HorizontalAlignment="Left" Margin="10,384,0,0" VerticalAlignment="Top" Width="259"/>
         <Button x:Name="btn_moveUp" Content="Nahoru" HorizontalAlignment="Left" Margin="653,58,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Btn_moveUp_Click"/>
         <Button x:Name="btn_moveDown" Content="Dolů" HorizontalAlignment="Left" Margin="653,97,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Btn_moveDown_Click"/>
-        <Button x:Name="btn_delete" Content="Smazat" HorizontalAlignment="Left" Margin="653,134,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Btn_delete_Click"/>
-
+        <Button x:Name="btn_delete" Content="Smazat" HorizontalAlignment="Left" Margin="653,134,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="Btn_delete_Click"/>        
   </Grid>
 </Window>
